@@ -1,0 +1,20 @@
+{
+  "name": "@tiled-extension/types",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Shared TypeScript definitions for Tiled Map Editor extension projects.",
+  "repository": "https://github.com/Dgzt/tiled-extension-types",
+  "keywords": [
+    "github",
+    "api",
+    "typescript",
+    "tiled",
+    "tilemap",
+    "tiledmap"
+  ],
+  "author": "Zsuró Tibor (https://github.com/Dgzt)",
+  "license": "MIT",
+  "types": "index.d.ts"
+}
