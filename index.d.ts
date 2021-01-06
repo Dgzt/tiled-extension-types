@@ -205,6 +205,10 @@ interface Rectangle {
     height: number;
 }
 
+interface Region {
+    readonly boundingRect: Rectangle;
+}
+
 interface SelectedArea {
     boundingRect: Rectangle;
 }
@@ -257,14 +261,68 @@ interface TileMap extends Asset {
     orientation: OrientationEnum;
     renderOrder: RenderOrderEnum;
     staggerIndex: StaggerIndexEnum;
-    // backgroundColor: color;
+    backgroundColor: any;
     layerDataFormat: LayerDataFormatEnum;
     readonly layerCount: number;
     tilesets: Array<Tileset>;
     selectedArea: SelectedArea;
     currentLayer: Layer;
     selectedLayers: Array<Layer>;
-    // selectedObjects : Array<MapObject>;
+    selectedObjects : Array<MapObject>;
+
+    autoMap(rulesFile?: string): void;
+
+    autoMap(region: Region | Rectangle, rulesFile?: string): void;
+
+    setSize(width: number, height: number): void;
+
+    setTileSize(width: number, height: number): void;
+
+    layerAt(index: number): Layer;
+
+    removeLayerAt(index: number): void;
+
+    removeLayer(layer: Layer): void;
+
+    insertLayerAt(index: number, layer: Layer): void;
+
+    addLayer(layer: Layer): void;
+
+    addTileset(tileset: Tileset): boolean;
+
+    replaceTileset(oldTileset: Tileset, newTileset: Tileset): boolean;
+
+    removeTileset(tileset: Tileset): boolean;
+
+    usedTilesets(): Array<Tileset>;
+
+    merge(map: TileMap, canJoin?: boolean): void;
+
+    resize(size: Size, offset?: Point, removeObjects?: boolean): void;
+
+    screenToTile(x: number, y: number): Point;
+
+    screenToTile(position: Point): Point;
+
+    tileToScreen(x: number, y: number): Point;
+
+    tileToScreen(position: Point): Point;
+
+    screenToPixel(x: number, y: number): Point;
+
+    screenToPixel(position: Point): Point;
+
+    pixelToScreen(x: number, y: number): Point;
+
+    pixelToScreen(position: Point): Point;
+
+    pixelToTile(x: number, y: number): Point;
+
+    pixelToTile(position: Point): Point;
+
+    tileToPixel(x: number, y: number): Point
+
+    tileToPixel(position: Point): Point;
 }
 
 interface Tileset extends Asset {
